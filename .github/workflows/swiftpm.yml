@@ -108,3 +108,15 @@ jobs:
         run: swift build -v
       - name: Test
         run: swift test -v
+  Android:
+    name: Android with Swift ${{ matrix.swift_version }}
+    runs-on: macos-13
+    strategy:
+      matrix:
+        swift_version: ['5.10.1']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: skiptools/swift-android-action@v1
+        with:
+          swift-version: ${{ matrix.swift_version }}
+
